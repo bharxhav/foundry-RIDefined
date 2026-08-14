@@ -60,9 +60,14 @@ build-firefox:
 build-chrome:
     pnpm build:chrome
 
+# Report type errors without changing files.
+[group('non-mutating')]
+typecheck:
+    pnpm typecheck
+
 # Run every read-only source validation.
 [group('porcelain')]
-check: fmt-check lint
+check: fmt-check lint typecheck
 
 # Archive the Firefox build.
 [group('non-mutating')]
