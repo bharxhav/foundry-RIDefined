@@ -1,0 +1,18 @@
+{
+  "name": "@foundry-ridefined/extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:firefox": "wxt -b firefox --mv3",
+    "dev:chrome": "wxt -b chrome",
+    "build:firefox": "wxt build -b firefox",
+    "build:chrome": "wxt build -b chrome",
+    "zip:firefox": "wxt zip -b firefox",
+    "zip:chrome": "wxt zip -b chrome"
+  },
+  "devDependencies": {
+    "typescript": "5.9.2",
+    "wxt": "0.20.18"
+  }
+}
