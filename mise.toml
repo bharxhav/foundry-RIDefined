@@ -1,0 +1,7 @@
+[tools]
+node = "24.5.0"
+pnpm = "latest"
+just = "1.53.0"
+
+[env]
+_.path = ["node_modules/.bin"]
