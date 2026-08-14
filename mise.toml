@@ -1,6 +1,6 @@
 [tools]
 node = "24.5.0"
-pnpm = "latest"
+pnpm = "11.9.0"
 just = "1.53.0"
 
 [env]
