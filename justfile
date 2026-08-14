@@ -8,9 +8,9 @@ default:
 install:
     pnpm install
 
-# Start the default Firefox development session.
+# Start the default Chrome development session.
 [group('dev')]
-dev: dev-firefox
+dev: dev-chrome
 
 # Start the extension in Firefox.
 [group('dev')]
