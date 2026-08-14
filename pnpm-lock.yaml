@@ -26,6 +26,9 @@ importers:
 
   ext:
     devDependencies:
+      '@wxt-dev/storage':
+        specifier: 1.1.1
+        version: 1.1.1
       typescript:
         specifier: 5.9.2
         version: 5.9.2
@@ -739,6 +742,9 @@ packages:
   '@wxt-dev/browser@0.2.5':
     resolution: {integrity: sha512-676RhVsOFNSZnisfeM9U40DdYjZmx5whJuBHJ7v4R2sR6e/SYfuIuzmJf3owr2n82d2vCDwGNbvt4nLU14sGZg==}
 
+  '@wxt-dev/storage@1.1.1':
+    resolution: {integrity: sha512-H1vYWeoWz03INV4r+sLYDFil88b3rgMMfgGp/EXy3bLbveJeiMiFs/G0bsBN2Ra87Iqlf2oVYRb/ABQpAugbew==}
+
   '@wxt-dev/storage@1.2.9':
     resolution: {integrity: sha512-dh9TJwvLBM2x4wyy9nE7eYE3wA8pgz1TXSyz7RbdjkJxLfFfWkbeIqiU7VkGy7Vx8sJBmQjoSpk9zSUb3Bjy0Q==}
 
@@ -1015,6 +1021,10 @@ packages:
 
   defu@6.1.7:
     resolution: {integrity: sha512-7z22QmUWiQ/2d0KkdYmANbRUVABpZ9SNYyH5vx6PZ+nE5bcC0l7uFvEfHlyld/HcGBFTL536ClDt3DEcSlEJAQ==}
+
+  dequal@2.0.3:
+    resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
+    engines: {node: '>=6'}
 
   destr@2.0.5:
     resolution: {integrity: sha512-ugFTXCtDZunbzasqBxrK93Ik/DRYsO6S/fedkWEMKqt04xZ4csmnmwGDBAb07QWNaGMAmnTIemsYZCksjATwsA==}
@@ -2765,6 +2775,11 @@ snapshots:
       '@types/filesystem': 0.0.36
       '@types/har-format': 1.2.16
 
+  '@wxt-dev/storage@1.1.1':
+    dependencies:
+      async-mutex: 0.5.0
+      dequal: 2.0.3
+
   '@wxt-dev/storage@1.2.9':
     dependencies:
       '@wxt-dev/browser': 0.2.5
@@ -3017,6 +3032,8 @@ snapshots:
   define-lazy-prop@3.0.0: {}
 
   defu@6.1.7: {}
+
+  dequal@2.0.3: {}
 
   destr@2.0.5: {}
 
