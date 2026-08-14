@@ -9,11 +9,20 @@
     "build:firefox": "wxt build -b firefox",
     "build:chrome": "wxt build -b chrome",
     "zip:firefox": "wxt zip -b firefox",
-    "zip:chrome": "wxt zip -b chrome"
+    "zip:chrome": "wxt zip -b chrome",
+    "typecheck": "wxt prepare && tsc --noEmit"
+  },
+  "dependencies": {
+    "@foundry-ridefined/ui": "workspace:*",
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "devDependencies": {
-    "@wxt-dev/storage": "1.1.1",
-    "typescript": "5.9.2",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@wxt-dev/module-react": "1.2.2",
+    "@wxt-dev/storage": "1.2.9",
+    "typescript": "catalog:",
     "wxt": "0.20.18"
   }
 }

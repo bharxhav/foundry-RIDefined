@@ -2,6 +2,19 @@ packages:
   - "ext"
   - "packages/*"
 
+catalog:
+  "@types/react": 19.2.18
+  "@types/react-dom": 19.2.4
+  react: 19.2.8
+  react-dom: 19.2.8
+  typescript: 5.9.2
+
 allowBuilds:
   esbuild: true
   spawn-sync: true
+
+overrides:
+  # @wxt-dev/module-react accepts @vitejs/plugin-react ^4 || ^5 || ^6, and pnpm
+  # resolves that to 6.x, which peers on vite ^8. wxt 0.20.18 ships vite 6.4.3,
+  # so pin the 5.x line, which supports vite ^4 through ^8.
+  "@vitejs/plugin-react": "5.2.0"
