@@ -1,0 +1,5 @@
+@layer theme, components, utilities;
+
+/* Blueprint owns resets and component visuals; Tailwind owns layout utilities. */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
