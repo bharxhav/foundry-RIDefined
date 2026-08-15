@@ -21,6 +21,9 @@ catalogs:
     typescript:
       specifier: 5.9.2
       version: 5.9.2
+    valibot:
+      specifier: 1.1.0
+      version: 1.1.0
 
 overrides:
   '@vitejs/plugin-react': 5.2.0
@@ -59,6 +62,9 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.2.8(react@19.2.8)
+      valibot:
+        specifier: 'catalog:'
+        version: 1.1.0(typescript@5.9.2)
     devDependencies:
       '@types/react':
         specifier: 'catalog:'
@@ -2479,6 +2485,14 @@ packages:
     deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
+  valibot@1.1.0:
+    resolution: {integrity: sha512-Nk8lX30Qhu+9txPYTwM0cFlWLdPFsFr6LblzqIySfbZph9+BFsAHsNvHOymEviUepeIW6KFHzpX8TKhbptBXXw==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   vite-node@3.2.4:
     resolution: {integrity: sha512-EbKSKh+bh1E1IFxeO0pg1n4dvoOTt0UDiXMd/qn++r98+jPO1xtJilvXldeuQ8giIB5IkpjCgMleHMNEsGH6pg==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
@@ -4895,6 +4909,10 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   uuid@8.3.2: {}
+
+  valibot@1.1.0(typescript@5.9.2):
+    optionalDependencies:
+      typescript: 5.9.2
 
   vite-node@3.2.4(@types/node@26.2.0)(jiti@2.7.0):
     dependencies:

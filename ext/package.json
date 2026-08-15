@@ -16,7 +16,8 @@
     "@foundry-ridefined/foundry": "workspace:*",
     "@foundry-ridefined/ui": "workspace:*",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "valibot": "catalog:"
   },
   "devDependencies": {
     "@types/react": "catalog:",

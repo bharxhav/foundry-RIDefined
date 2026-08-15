@@ -8,6 +8,7 @@ catalog:
   react: 19.2.8
   react-dom: 19.2.8
   typescript: 5.9.2
+  valibot: 1.1.0
 
 allowBuilds:
   esbuild: true
