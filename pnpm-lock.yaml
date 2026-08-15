@@ -47,6 +47,9 @@ importers:
 
   ext:
     dependencies:
+      '@foundry-ridefined/foundry':
+        specifier: workspace:*
+        version: link:../packages/foundry
       '@foundry-ridefined/ui':
         specifier: workspace:*
         version: link:../packages/ui
@@ -75,6 +78,12 @@ importers:
       wxt:
         specifier: 0.20.18
         version: 0.20.18(@types/node@26.2.0)(eslint@9.33.0(jiti@2.7.0))(jiti@2.7.0)(rollup@4.62.4)
+
+  packages/foundry:
+    devDependencies:
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.2
 
   packages/ui:
     dependencies:

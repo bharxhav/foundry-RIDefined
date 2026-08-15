@@ -13,6 +13,7 @@
     "typecheck": "wxt prepare && tsc --noEmit"
   },
   "dependencies": {
+    "@foundry-ridefined/foundry": "workspace:*",
     "@foundry-ridefined/ui": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:"
