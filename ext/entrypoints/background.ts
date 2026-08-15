@@ -3,10 +3,6 @@ import { browser } from "wxt/browser";
 
 import { applySettings } from "@/settings/background/apply";
 import {
-  SETTINGS_MENU_ITEM_ID,
-  createSettingsMenu,
-} from "@/settings/background/menu";
-import {
   isSaveSettingsMessage,
   type SaveSettingsResponse,
 } from "@/settings/messages";
@@ -15,6 +11,7 @@ import { getSettings } from "@/settings/storage";
 
 /** Only our own settings page may change settings. */
 const SETTINGS_URL = browser.runtime.getURL("/settings.html");
+const SETTINGS_MENU_ITEM_ID = "foundry-ridefined-settings";
 
 const settingsQueue = new PQueue({ concurrency: 1 });
 
@@ -24,7 +21,16 @@ export default defineBackground(() => {
   const initialize = () =>
     settingsQueue.add(async () => {
       const settings = await getSettings();
-      await createSettingsMenu();
+      // Initialization may run more than once during a worker lifetime. Remove
+      // first because creating an existing context-menu id throws.
+      await browser.contextMenus
+        .remove(SETTINGS_MENU_ITEM_ID)
+        .catch(() => undefined);
+      browser.contextMenus.create({
+        id: SETTINGS_MENU_ITEM_ID,
+        title: "Settings",
+        contexts: ["action"],
+      });
       await applySettings(settings);
     });
 
