@@ -1,4 +1,4 @@
-import { isPlainObject } from "../plain-object";
+import * as v from "valibot";
 
 import { parseOrigins, type ValidOrigin } from "./origin";
 
@@ -16,6 +16,11 @@ export const DEFAULT_SETTINGS: Settings = {
   origins: [],
 };
 
+const StoredSettingsSchema = v.object({
+  enabled: v.optional(v.boolean(), DEFAULT_SETTINGS.enabled),
+  origins: v.optional(v.unknown()),
+});
+
 /**
  * Coerce anything into usable settings.
  *
@@ -24,13 +29,11 @@ export const DEFAULT_SETTINGS: Settings = {
  * to the defaults instead of throwing.
  */
 export function normalizeSettings(value: unknown): Settings {
-  if (!isPlainObject(value)) return { ...DEFAULT_SETTINGS, origins: [] };
+  const result = v.safeParse(StoredSettingsSchema, value);
+  if (!result.success) return { ...DEFAULT_SETTINGS, origins: [] };
 
   return {
-    enabled:
-      typeof value.enabled === "boolean"
-        ? value.enabled
-        : DEFAULT_SETTINGS.enabled,
-    origins: parseOrigins(value.origins),
+    enabled: result.output.enabled,
+    origins: parseOrigins(result.output.origins),
   };
 }
