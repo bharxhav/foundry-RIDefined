@@ -1,0 +1,34 @@
+/*
+ * Base layer for our own full-page documents.
+ *
+ * Applies to any document we serve ourselves, such as the settings page. It has
+ * no effect inside the skin's shadow root, where `:root` matches the host page's
+ * root element rather than the shadow tree — skin layout lives in the skin
+ * package's own stylesheet.
+ *
+ * This exists because Tailwind's Preflight is deliberately disabled repo-wide so
+ * it cannot reset Blueprint.
+ */
+:root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: auto;
+  background: var(--bp-surface-background-color-default-rest, #ffffff);
+  color: var(--bp-typography-color-default-rest, #1c2127);
+  font-family: var(
+    --bp-typography-family-default,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif
+  );
+}
