@@ -1,11 +1,10 @@
 {
-  "name": "@foundry-ridefined/foundry",
+  "name": "@foundry-ridefined/foundry-client",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./overview": "./src/routes/overview.ts"
+    ".": "./src/index.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"

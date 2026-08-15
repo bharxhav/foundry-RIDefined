@@ -13,7 +13,8 @@
     "typecheck": "wxt prepare && tsc --noEmit"
   },
   "dependencies": {
-    "@foundry-ridefined/foundry": "workspace:*",
+    "@foundry-ridefined/foundry-client": "workspace:*",
+    "@foundry-ridefined/skin": "workspace:*",
     "@foundry-ridefined/ui": "workspace:*",
     "p-queue": "catalog:",
     "react": "catalog:",

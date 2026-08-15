@@ -59,9 +59,12 @@ importers:
 
   ext:
     dependencies:
-      '@foundry-ridefined/foundry':
+      '@foundry-ridefined/foundry-client':
         specifier: workspace:*
-        version: link:../packages/foundry
+        version: link:../packages/foundry-client
+      '@foundry-ridefined/skin':
+        specifier: workspace:*
+        version: link:../packages/skin
       '@foundry-ridefined/ui':
         specifier: workspace:*
         version: link:../packages/ui
@@ -103,8 +106,33 @@ importers:
         specifier: 0.20.18
         version: 0.20.18(@types/node@26.2.0)(eslint@9.33.0(jiti@2.7.0))(jiti@2.7.0)(lightningcss@1.30.1)(rollup@4.62.4)
 
-  packages/foundry:
+  packages/foundry-client:
     devDependencies:
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.2
+
+  packages/skin:
+    dependencies:
+      '@foundry-ridefined/foundry-client':
+        specifier: workspace:*
+        version: link:../foundry-client
+      '@foundry-ridefined/ui':
+        specifier: workspace:*
+        version: link:../ui
+    devDependencies:
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.2.18
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.2.4(@types/react@19.2.18)
+      react:
+        specifier: 'catalog:'
+        version: 19.2.8
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.2.8(react@19.2.8)
       typescript:
         specifier: 'catalog:'
         version: 5.9.2
