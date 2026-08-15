@@ -19,6 +19,10 @@ export default defineConfig({
     name: "Foundry RIdefined",
     description: "A browser extension for Palantir Foundry.",
     permissions: ["storage", "contextMenus"],
+    options_ui: {
+      page: "settings.html",
+      open_in_tab: true,
+    },
     action: {
       default_title: "Foundry RIdefined: On",
       default_icon: {

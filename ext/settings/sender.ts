@@ -22,7 +22,7 @@ export function isOwnExtension(sender: SenderIdentity): boolean {
 }
 
 /**
- * Whether a sender is one of a specific set of our own pages.
+ * Whether a sender is the settings page.
  *
  * The background worker acts on `save-settings`, so being inside the extension
  * is not enough — the sender must be a page we shipped. Matching is on exact
@@ -33,8 +33,7 @@ export function isOwnExtension(sender: SenderIdentity): boolean {
  */
 export function isTrustedExtensionPage(
   sender: SenderIdentity,
-  allowedUrls: ReadonlySet<string>,
+  settingsUrl: string,
 ): boolean {
-  if (!isOwnExtension(sender) || sender.url === undefined) return false;
-  return allowedUrls.has(sender.url);
+  return isOwnExtension(sender) && sender.url === settingsUrl;
 }
