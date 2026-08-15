@@ -3,7 +3,6 @@ import {
   Code,
   Divider,
   FormGroup,
-  H5,
   Intent,
   Spinner,
   TextArea,
@@ -111,7 +110,9 @@ export function SettingsPage() {
   return (
     <div className="mx-auto flex max-w-[720px] flex-col gap-4 px-6 py-8">
       <div className="flex items-center justify-between gap-4">
-        <H5>foundry RIDefined settings</H5>
+        <div className="text-md leading-none font-semibold">
+          foundry RIDefined settings
+        </div>
         <Button
           text="Save"
           size="small"
