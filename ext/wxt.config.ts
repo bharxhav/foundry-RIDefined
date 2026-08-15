@@ -19,7 +19,6 @@ export default defineConfig({
     name: "Foundry RIdefined",
     description: "A browser extension for Palantir Foundry.",
     permissions: ["storage", "contextMenus"],
-    host_permissions: ["https://*.palantirfoundry.com/*"],
     action: {
       default_title: "Foundry RIdefined: On",
       default_icon: {
