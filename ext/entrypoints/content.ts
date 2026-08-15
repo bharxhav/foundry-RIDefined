@@ -1,8 +1,7 @@
 import { browser } from "wxt/browser";
 
-import { clearOperationExecutor } from "@/content/operations/executor";
-import { isAppMounted, mountApp, unmountApp } from "@/content/takeover/mount";
-import { ownsDocument } from "@/content/takeover/ownership";
+import { isSkinMounted, mountSkin, unmountSkin } from "@/takeover/mount";
+import { shouldRunSkin } from "@/takeover/ownership";
 import { isSettingsChangedMessage } from "@/settings/messages";
 import { isOwnExtension } from "@/settings/sender";
 import type { Settings } from "@/settings/settings";
@@ -22,7 +21,7 @@ export default defineContentScript({
     let settings: Settings | undefined;
 
     const shouldOwn = () =>
-      settings !== undefined && ownsDocument(settings, window.location.href);
+      settings !== undefined && shouldRunSkin(settings, window.location.href);
 
     /**
      * Brings the page in line with settings and route ownership.
@@ -38,12 +37,12 @@ export default defineContentScript({
       if (isStale()) return;
 
       if (!shouldOwn()) {
-        unmountApp();
+        unmountSkin();
         return;
       }
 
-      await mountApp(ctx, shouldOwn);
-      if (isStale() || !shouldOwn()) unmountApp();
+      await mountSkin(ctx, shouldOwn);
+      if (isStale() || !shouldOwn()) unmountSkin();
     }
 
     // Foundry navigates without reloading, so the content script is not re-run
@@ -51,7 +50,7 @@ export default defineContentScript({
     // every history change, and act only when it actually flips, so navigation
     // within our own routes is left to React.
     function syncOwnership() {
-      if (shouldOwn() === isAppMounted()) return;
+      if (shouldOwn() === isSkinMounted()) return;
       void reconcile();
     }
 
@@ -67,8 +66,8 @@ export default defineContentScript({
     ctx.onInvalidated(() => {
       generation += 1;
       browser.runtime.onMessage.removeListener(onMessage);
-      clearOperationExecutor();
-      unmountApp();
+      // Unmounting disposes the executor with the rest of the mount.
+      unmountSkin();
     });
 
     await reconcile();
