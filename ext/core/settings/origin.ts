@@ -1,3 +1,5 @@
+import * as v from "valibot";
+
 declare const validOrigin: unique symbol;
 
 /** An exact HTTPS origin accepted by `parseOrigins`. */
@@ -10,6 +12,24 @@ export function includesOrigin(
   return origins.some((candidate) => candidate === origin);
 }
 
+const OriginSchema = v.pipe(
+  v.string(),
+  v.trim(),
+  v.url(),
+  v.transform((input) => new URL(input)),
+  v.check(
+    (url) =>
+      url.protocol === "https:" &&
+      url.port === "" &&
+      url.username === "" &&
+      url.password === "" &&
+      url.pathname === "/" &&
+      url.search === "" &&
+      url.hash === "",
+  ),
+  v.transform((url) => url.origin as ValidOrigin),
+);
+
 /**
  * Parses newline-separated origins, discarding malformed and duplicate values.
  *
@@ -21,28 +41,12 @@ export function parseOrigins(value: unknown): ValidOrigin[] {
   const inputs = typeof value === "string" ? value.split("\n") : value;
   if (!Array.isArray(inputs)) return [];
 
-  const origins = new Set<ValidOrigin>();
-
-  for (const input of inputs) {
-    if (typeof input !== "string") continue;
-
-    try {
-      const url = new URL(input.trim());
-      if (
-        url.protocol === "https:" &&
-        url.port === "" &&
-        url.username === "" &&
-        url.password === "" &&
-        url.pathname === "/" &&
-        url.search === "" &&
-        url.hash === ""
-      ) {
-        origins.add(url.origin as ValidOrigin);
-      }
-    } catch {
-      // Invalid entries are not part of the allowlist.
-    }
-  }
-
-  return [...origins];
+  return [
+    ...new Set(
+      inputs.flatMap((input) => {
+        const result = v.safeParse(OriginSchema, input);
+        return result.success ? [result.output] : [];
+      }),
+    ),
+  ];
 }
