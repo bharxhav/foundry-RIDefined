@@ -15,6 +15,7 @@
   "dependencies": {
     "@foundry-ridefined/foundry": "workspace:*",
     "@foundry-ridefined/ui": "workspace:*",
+    "p-queue": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "valibot": "catalog:"
