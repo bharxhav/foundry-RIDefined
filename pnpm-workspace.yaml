@@ -2,16 +2,21 @@ packages:
   - "ext"
   - "packages/*"
 
+dedupePeerDependents: true
+
 catalog:
   "@types/react": 19.2.18
   "@types/react-dom": 19.2.4
+  "@tailwindcss/vite": 4.1.14
   p-queue: 9.3.3
   react: 19.2.8
   react-dom: 19.2.8
   typescript: 5.9.2
+  tailwindcss: 4.1.14
   valibot: 1.1.0
 
 allowBuilds:
+  "@tailwindcss/oxide": true
   esbuild: true
   spawn-sync: true
 
